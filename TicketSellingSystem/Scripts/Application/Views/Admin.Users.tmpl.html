@@ -1,0 +1,35 @@
+﻿<div class="block" id="admin-table">
+    <div class="text-center block-header">Users</div>
+    <div class="block-content">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Block/Unblock</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-ng-repeat="user in admin.users.Items">
+                <td>{{user.Name}}</td>
+                <td>{{user.Email}}</td>
+                <td>
+                    <div class="btn btn-default block-btn btn-sm text-center" data-ng-click="admin.block(user.Email)">{{user.Blocked === true? 'Unblock':'Block'}}</div>
+                </td>
+                <td>{{user.Phone}}<span data-ng-show="!user.Phone">---</span></td>
+                <td>{{user.Roles}}</td>
+                <td>
+                    <input type="button" class="btn btn-danger btn-sm" value="Delete" data-ng-click="admin.delete(user.Email)">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <h2 class="text-center text-warning" data-ng-show="admin.isEmpty()">Data is empty</h2>
+        <div align="center">
+            <pagination class="pagination-sm" total-items="admin.users.Count" items-per-page="admin.users.CountPerPage" data-ng-model="admin.currentPage" max-size="5" data-ng-change="admin.pageChanged()"></pagination>
+        </div>
+    </div>
+</div>

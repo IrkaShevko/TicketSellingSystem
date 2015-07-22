@@ -1,0 +1,61 @@
+﻿<div class="body-content">
+    <h2 class=" col-xs-offset-3 col-xs-9 col-sm-offset-5 col-sm-7 text-danger" data-ng-show="register.errorMessage">{{register.errorMessage}}</h2>
+    <h1 class=" col-xs-offset-3 col-xs-9 col-sm-offset-5 col-sm-7 ">Registration</h1>
+    <form class="form-horizontal" name="registerForm" data-ng-submit="register.submit()" novalidate>
+        <div class="form-group">
+            <label class="control-label col-xs-3 col-sm-5" for="Name">Name*:</label>
+            <div class="col-xs-9 col-sm-7">
+                <input type="text" class="form-control" name="name" id="Name" placeholder="Enter name" data-ng-model="register.user.name" required>
+                <div class="text-danger" data-ng-show="registerForm.$submitted || registerForm.name.$touched">
+                    <div data-ng-show="registerForm.name.$error.required">Name is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3 col-sm-5" for="Email">Email*:</label>
+            <div class="col-xs-9 col-sm-7">
+                <input type="email" class="form-control" id="Email" name="email" placeholder="Email" data-ng-model="register.user.email" required>
+                <div class="text-danger" data-ng-show="registerForm.$submitted || registerForm.email.$touched">
+                    <div data-ng-show="registerForm.email.$error.required">Email is required</div>
+                    <div data-ng-show="registerForm.email.$error.email">Invalid email address</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3 col-sm-5" for="Password">Password*:</label>
+            <div class="col-xs-9 col-sm-7">
+                <input type="password" class="form-control" id="Password" name="password" placeholder="Enter password" data-ng-minlength="6" data-ng-model="register.user.password" required>
+                <div class="text-danger" data-ng-show="registerForm.$submitted || registerForm.password.$touched">
+                    <div data-ng-show="registerForm.password.$error.required">Password is required</div>
+                    <div data-ng-show="registerForm.password.$error.minlength">Password should be at least 6 symbols</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3 col-sm-5" for="confirmPassword">Confirm Password*:</label>
+            <div class="col-xs-9 col-sm-7">
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" data-ng-model="register.user.confirmPassword">
+                <div class="text-danger" data-ng-show="registerForm.$submitted || registerForm.confirmPassword.$touched">
+                    <div data-ng-show="register.user.password !== register.user.confirmPassword">Passwords do not match</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3 col-sm-5" for="phoneNumber">Phone:</label>
+            <div class="col-xs-9 col-sm-7">
+                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="+44111444222" data-ng-model="register.user.phone" data-ng-pattern="/^\+(?:[0-9]●?){6,14}[0-9]$/">
+                <div class="text-danger" data-ng-show="registerForm.phoneNumber.$error.pattern">
+                    <div data-ng-show="registerForm.phoneNumber.$error.pattern">Phone number is not valid</div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">fields with * <span class="underline">are required</span></div>
+        <br/>
+        <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-9 col-sm-offset-5 col-sm-7">
+                <input type="submit" class="btn btn-primary" value="Registration" data-ng-disabled="registerForm.$invalid">
+                <input type="reset" class="btn btn-default" value="Clear form" data-ng-click="register.reset()">
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,32 @@
+﻿<div class="body-content">
+    <h2 class=" col-xs-offset-3 col-xs-9 col-sm-offset-5 col-sm-7 text-danger" data-ng-show="register.errorMessage">{{register.errorMessage}}</h2>
+    <h1 class=" col-xs-offset-3 col-xs-9 col-sm-offset-5 col-sm-7 ">Sign In</h1>
+    <form name="loginForm" class="form-horizontal" data-ng-submit="login.submit()" novalidate>
+        <div class="form-group">
+            <label class="control-label col-xs-3 col-sm-5">Email:</label>
+            <div class="col-xs-9 col-sm-7">
+                <input type="email" class="form-control" name="email" placeholder="Email" data-ng-model="login.user.email" required>
+                <div class="text-danger" data-ng-show="loginForm.$submitted || loginForm.email.$touched">
+                    <div data-ng-show="loginForm.email.$error.required">Email is required</div>
+                    <div data-ng-show="loginForm.email.$error.email">Invalid email address</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3 col-sm-5">Password:</label>
+            <div class="col-xs-9 col-sm-7">
+                <input type="password" class="form-control" minlength="6" name="Password" placeholder="Enter password" data-ng-model="login.user.password" required/>
+                <div class="text-danger" data-ng-show="loginForm.$submitted || loginForm.Password.$touched">
+                    <div class="text-danger" data-ng-show="loginForm.Password.$error.required">Password is required</div>
+                    <div class="text-danger" data-ng-show="loginForm.Password.$error.required || loginForm.Password.$error.minlength">Password must be at least 6 symbols</div>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-9 col-sm-offset-5 col-sm-7">
+                <input type="submit" class="btn btn-primary" value="Enter" data-ng-disabled="loginForm.$invalid">
+            </div>
+        </div>
+    </form>
+</div>

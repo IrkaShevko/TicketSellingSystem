@@ -1,0 +1,41 @@
+﻿html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    background-color: rgb(25, 29, 56);
+    color: rgb(217, 252, 255);
+}
+
+.text-color { color: rgb(217, 252, 255); }
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+input,
+select { max-width: 280px; }
+
+.wrapper {
+    position: relative;
+    min-height: 100%
+}
+
+.container-padding { padding-bottom: 60px; }
+
+.footer {
+    width: 100%;
+    height: 60px;
+    background-color: rgb(10, 10, 50);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+}
+
+.text-footer { padding-top: 20px; }

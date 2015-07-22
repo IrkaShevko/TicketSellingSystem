@@ -1,0 +1,50 @@
+﻿<div class="col-sm-8 pull-right">
+    <div class="block">
+        <div class="block-header text-center">Films</div>
+        <div class="block-content">
+            <ul class="menu-list">
+                <li data-ng-repeat="film in main.films">
+                    <div class="media">
+                        <a data-ng-href="/Film/{{film.Id}}" class="pull-right">
+                            <img data-ng-src="{{film.LogoPath}}" class="poster media-object" alt="poster" />
+                        </a>
+                        <div class="media-body">
+                            <a data-ng-href="/Film/{{film.Id}}" class="text-warning">
+                                <p>{{film.Name}} ({{film.PublishingYear}})</p>
+                            </a>
+                            <p>
+                                {{film.Description}}
+                            </p>
+                            <p>
+                                Publising year: {{film.PublishingYear}}
+                                <br/>
+                                Country: {{film.Country}}
+                                <br/>
+                                Genre: {{film.Genre}}
+                                <br/>
+                                Duration: {{film.Duration}}
+                            </p>
+                        </div>
+                    </div>
+                    <hr/>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 pull-left">
+    <div class="block">
+        <div class="block-header text-center">Calendar</div>
+        <div class="block-content">
+            <div class="datapicker" align="center">
+                <datepicker ng-model="main.date" min-date="minDate" show-weeks="true"></datepicker>
+                <button type="button" id="clear-btn" class="btn btn-sm btn-danger" ng-click="main.clear()">Clear</button>
+            </div>
+        </div>
+    </div>
+    <div class="block">
+        <div class="block-header text-center">Tags</div>
+        <div class="block-content">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿<div class="block">
+    <div class="block-header text-center">Film</div>
+    <div class="block-content">
+        <div class="media">
+            <div class="pull-right">
+                <img data-ng-src="{{film.data.LogoPath}}" class="poster media-object" alt="poster"/>
+            </div>
+            <div class="media-body">
+                <h2 class="text-warning">{{film.data.Name}} ({{film.data.PublishingYear}})</h2>
+                <p>
+                    {{film.data.Description}}
+                </p>
+                <p>
+                    Publising year: {{film.data.PublishingYear}}
+                    <br/>
+                    Country: {{film.data.Country}}
+                    <br/>
+                    Genre: {{film.data.Genre}}
+                    <br/>
+                    Duration: {{film.data.Duration}}
+                </p>
+            </div>
+        </div>
+        <hr/>
+        <h2> Buy tickets</h2>
+        <ul>
+            <li data-ng-repeat="day in film.days">
+                <ul>
+                    <li data-ng-repeat="session in day.sessions">
+                        {{session.time}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

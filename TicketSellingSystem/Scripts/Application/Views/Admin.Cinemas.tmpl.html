@@ -1,0 +1,43 @@
+﻿<div class="block" id="admin-table">
+    <div class="text-center block-header">Cinemas</div>
+    <div class="block-content">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>Change Photo</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="cinema in admin.cinemas.Items">
+                    <td><img ng-src="{{cinema.LogoPath}}" class="thumbnail picture-size" src="/Content/Images/Unknown.png" alt="photo"></td>
+                    <td><button class="btn btn-primary" data-ng-click="admin.createFileUploadDialog(cinema.Id)">Change photo</button></td>
+                    <td><span editable-text="cinema.Name" e-name="Name" e-form="rowform" onbeforesave="admin.checkCinemaName($data, cinema.Id)" class="text-color" e-required>{{cinema.Name}}</span></td>
+                    <td><span editable-text="cinema.Address" e-name="Address" e-form="rowform" onbeforesave="admin.checkCinemaAddress($data, cinema.Id)" class="text-color" e-required>{{cinema.Address}}</span></td>
+                    <td>
+                        <form editable-form name="rowform" onbeforesave="admin.saveCinema($data, cinema.Id, $index)" ng-show="rowform.$visible" class="form-inline" shown="inserted == cinema">
+                            <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                                save
+                            </button>
+                            <button type="button" ng-disabled="rowform.$waiting" ng-click="admin.checkIsNewRow($index) && rowform.$cancel()" class="btn btn-default">
+                                cancel
+                            </button>
+                        </form>
+                        <div ng-show="!rowform.$visible">
+                            <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+                            <button class="btn btn-danger" ng-click="admin.delete($index)">del</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-default" ng-click="admin.addCinema()">Add row</button>
+        <h2 class="text-center text-warning" data-ng-show="admin.isEmpty()">Data is empty</h2>
+        <div align="center" data-ng-if="!admin.onePage">
+            <pagination class="pagination-sm" total-items="admin.cinemas.Count" items-per-page="admin.cinemas.CountPerPage" data-ng-model="admin.currentPage" max-size="5" data-ng-change="admin.pageChanged()"></pagination>
+        </div>
+    </div>
+</div>
